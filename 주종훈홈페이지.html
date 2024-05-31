@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>주종훈 홈페이지</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease-in-out;
+            border-radius: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sidebar {
+            width: 25%;
+            background-color: rgba(211, 84, 0, 0.7);
+            color: white;
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: static; /* 추가 */
+        }
+
+        .profile {
+            margin-bottom: 20px;
+        }
+
+        .photo {
+            width: 150px;
+            height: 200px;
+            background-color: #d0d0d0;
+            border-radius: 10px;
+            margin: 0 auto 20px;
+            background-image: url('주종훈얼굴.jpg'); /* 이미지 파일이 HTML 파일과 같은 디렉토리에 있어야 합니다 */
+            background-size: cover;
+            background-position: center;
+            border: 4px solid #fff;
+        }
+        .photo2 {
+            width: 400px;
+            height: 400px;
+            background-color: #d0d0d0;
+            border-radius: 10px;
+            margin: 0 auto 20px;
+            background-image: url('연대기.PNG'); /* 이미지 파일이 HTML 파일과 같은 디렉토리에 있어야 합니다 */
+            background-size: cover;
+            background-position: center;
+            border: 4px solid #fff;
+        }
+        .photo3 {
+            width: 300px;
+            height: 300px;
+            background-color: #d0d0d0;
+            border-radius: 10px;
+            margin: 0 auto 20px;
+            background-image: url('동기.PNG'); /* 이미지 파일이 HTML 파일과 같은 디렉토리에 있어야 합니다 */
+            background-size: cover;
+            background-position: center;
+            border: 4px solid #fff;
+        }
+        .photo4 {
+            width: 100px;
+            height: 100px;
+            background-color: #d0d0d0;
+            border-radius: 10px;
+            margin: 0 auto 20px;
+            background-image: url('테니스.PNG'); /* 이미지 파일이 HTML 파일과 같은 디렉토리에 있어야 합니다 */
+            background-size: cover;
+            background-position: center;
+            border: 4px solid #fff;
+        }
+        .photo5 {
+            width: 10px;
+            height: 10px;
+            background-color: #d0d0d0;
+            border-radius: 10px;
+            margin: 0 auto 20px;
+            background-image: url('인스타로고1.PNG'); /* 이미지 파일이 HTML 파일과 같은 디렉토리에 있어야 합니다 */
+            background-size: cover;
+            background-position: center;
+            border: 4px solid #fff;
+        }
+        .photo6 {
+            width: 10px;
+            height: 10px;
+            background-color: #d0d0d0;
+            border-radius: 10px;
+            margin: 0 auto 20px;
+            background-image: url('네이버로고.PNG'); /* 이미지 파일이 HTML 파일과 같은 디렉토리에 있어야 합니다 */
+            background-size: cover;
+            background-position: center;
+            border: 4px solid #fff;
+        }
+
+        .name {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .title {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: left;
+        }
+
+        .menu li {
+            padding: 15px 0;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .menu li:hover, .menu li.active {
+            background-color: rgba(230, 126, 34, 0.7);
+        }
+
+        .content {
+            flex: 1;
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            overflow: auto;
+            
+            transition: all 0.3s ease-in-out;
+            position: relative;
+        }
+
+        .section {
+            display: none;
+            height: 100%;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .social-icons {
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            margin: 0 5px;
+            text-decoration: none;
+            color: white;
+            font-size: 20px;
+        }
+
+        .contact-info {
+            font-size: 14px;
+            margin-top: 10px;
+            line-height: 1.6;
+        }
+
+        .about {
+            font-size: 30px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #EXPERIENCE img,
+        #EDUCATION img,
+        #INTERESTS img,
+        #ETC img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                width: 100%;
+                height: auto;
+            }
+
+            .sidebar {
+                width: 100%;
+                padding: 20px 0;
+                border-radius: 0;
+            }
+
+            .content {
+                width: 100%;
+                padding: 20px;
+            }
+
+            .menu li {
+                padding-left: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .name {
+                font-size: 20px;
+            }
+
+            .menu li {
+                font-size: 14px;
+                padding-left: 30px;
+            }
+
+            .photo {
+                width: 100px;
+                height: 150px;
+            }
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.menu li').on('click', function() {
+                $('.menu li').removeClass('active');
+                $(this).addClass('active');
+                
+                $('.section').removeClass('active');
+                $('#' + $(this).data('section')).addClass('active');
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div>
+                <div class="profile">
+                    <div class="photo"></div>
+                    <div class="name">주종훈</div>
+                    <div class="contact-info">
+                        Born : Gimpo<br>
+                        Birth : 2002.03.02<br>
+                        Phone : (+82) 10-3021-4323<br>
+                        Email : markjjh@naver.com
+                    </div>
+                </div>
+                <ul class="menu">
+                    <li data-section="HOME" class="active">HOME</li>
+                    <li data-section="EXPERIENCE">EXPERIENCE</li>
+                    <li data-section="INTERESTS">INTERESTS</li>
+                    <li data-section="ETC">ETC</li>
+                </ul>
+            </div>
+            <div class="social-icons">
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-linkedin"></i></a>
+                <a href="#"><i class="fa fa-github"></i></a>
+            </div>
+        </div>
+        <div class="content">
+            <div id="HOME" class="section active">
+                <div class="about">HOME</div>
+                <div class="photo"></div>
+                <div class="intro">
+                    <h1>CHU JONG HOON</h1>
+                    <h2>introduce</h2>
+                    <h3> </h3>
+                    <p>Hello everyone, I am a student in the computer engineering department of Kangwon National University.
+                        I made a web homepage with the web programming skills I learned from my favorite professor, Professor Kim A-wook.
+                        I realized that the web like 'Netflix, YouTube, Naver, Google' is very well made by showing that the web is visualized even though studying computers is clichéd.
+                        At the same time, I'm wondering how the web to which data is connected works, not just to create a web, and how this lot of data appears on the web.
+                        I would like to give this honor to Professor Kim A-wook for giving me a fun and fruitful class, and I want to become a computer master like you.
+                    </p>
+                    <h2>Introduction to the website</h2>
+                    <h3>    </h3>
+                    <p>1. In 'HOME', there is a brief introduction to the website along with my introduction.</p>
+                    <h3></h3>
+                    <p>2. 'EXPERIENCE' has an introduction to my chronology and motivation.</p>    
+                    <h3></h3>   
+                    <p>3. In 'INTERESTS', there is an introduction about my hobbies and things that I have interested in.</p>
+                    <h3></h3>  
+                    <p>4. 'ETC' is written about my social media address and things to revise on my homepage in the future.</p>
+                    <h3></h3>
+                </div>
+            </div>
+
+            <div id="EXPERIENCE" class="section">
+                <div class="about">EXPERIENCE</div>
+                <h1>Chronicle</h1>
+                <img src="연대기.PNG" alt="Experience Image"> 
+                <p>These are my childhood, childhood, adolescence, and myself after the military.</p>
+                <h1>    </h1>
+                <h1>    </h1>
+                <h1>Motivation</h1>
+                <img src="동기.PNG" alt="Experience Image"> 
+                <p>Motivation comes from a lot of experience.
+                    Goals, attitudes, success, performance, ideas, and intelligence are essential elements of my life.</p>
+                <h2>     ·Goal  </h2>
+                <p>My goal is to be a computer programmer through security or network operation.
+                    After watching the movie 'Imitation Game' about Allenturing, I became interested in security and hacking.
+                    The fight between a shield that never breaks through and a spear that breaks through everything must be a material that all humans will be interested in.
+                    I think security and hacking are also very close to this.</p>    
+                <h2>     · Attitude  </h2>
+                <p>Attitudes change many things.
+                    Depending on what attitude you have, your perspective on things will also change.
+                    Our lives will be divided in various directions depending on how we view many concerns about study or life.
+                    To those who have lived before us in the past or intellectuals of this era, we try to live with the right attitude while looking at the answer close to the correct answer.</p>    
+                <h2>     · Intelligence  </h2>
+                <p>I think intelligence is a gift given to us humans.
+                    Intelligence shines only when you keep using it. Some of you may have heard of the saying, "You're smart, but you don't try." Effort is also intelligence and talent. Those who try are given the ability to seize many opportunities. I also try to develop the power to seize opportunities when opportunities arise.</p>    
+                <h2>    · Success</h2> 
+                <p>I think success is an achievement achieved through various failures or experiences.
+                    Without success, I think further progress is difficult.
+                    It is often said that failure is the mother of success.
+                    However, through success in the process, I gain a sense of accomplishment, and the magnitude of that success greatly affects me, whether small or large.</p>           
+                <h2>    · Idea</h2>
+                <p>There is no idea to sit still and relax. Ideas always live and move actively. People with new ideas burn with passion. Living for an idea and giving your life to it is the motivation and the driving force of life.</p>
+            </div>
+            <div id="INTERESTS" class="section">
+                <div class="about">INTERESTS</div>
+                <h1>Tennis</h1>
+                <img src="테니스.PNG" alt="Interests Image"> 
+                <p>Tennis is my favorite hobby and exercise.
+                    From the left, it's Nadal, Federer, Djokovic and they are my favorite tennis players.
+                    Whenever I can't concentrate on studying computer, I watch tennis videos, but I take turns looking at these three players with admiration.
+                    Tennis is a difficult sport, but it is a sport with that charm that cannot be escaped.
+                    I hope everyone falls in love with tennis.
+                    </p>
+            </div>
+            <div id="ETC" class="section">
+                <div class="about">ETC</div>
+                <h1>Social Media</h1>
+                <h3>Naver Blog</h3>
+                <a href="https://m.blog.naver.com/markjjh" target="_blank">
+                <img src="네이버로고.PNG" alt="ETC Image">
+                </a>
+                <h3>Instagram</h3>
+                <a href="https://www.instagram.com/ihate_eggplant/" target="_blank">
+                    <img src="인스타로고1.PNG" alt="ETC Image"> 
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
